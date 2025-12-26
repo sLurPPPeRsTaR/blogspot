@@ -16,10 +16,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Buat 5 users
         $users = User::factory()->count(5)->create();
 
-        // Buat 100 posts yang terdistribusi di antara 5 users
+
         Post::factory()->count(100)->create([
             'user_id' => fn() => $users->random()->id,
         ]);
